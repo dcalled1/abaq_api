@@ -101,12 +101,50 @@ async fn index() -> impl Responder {
 }
 
 #[post("/api")]
-async fn api(json: web::Json<RequestTest>,) -> impl Responder {
+async fn api(json: web::Json<RequestTest>) -> impl Responder {
     match json.problem_type {
-        ProblemType::RootFinding => (),
-        ProblemType::LinearEquations => (),
-        ProblemType::Interpolation => (),
-        _ => {}
+        ProblemType::RootFinding => {
+            match json.method {
+                Method::IncrementalSearch => {},
+                Method::Bisection => {},
+                Method::FalsePosition => {},
+                Method::FixedPoint => {},
+                Method::Newton => {},
+                Method::Secant => {},
+                Method::MultipleRoot => {},
+                Method::Steffensen => {},
+                Method::Muller => {},
+                Method::AcceleratedFixedPoint => {},
+                _ => (),
+            }
+        },
+        ProblemType::LinearEquations => {
+            match json.method {
+                Method::GaussianElimination => {},
+                Method::PartialPivotingGaussianElimination => {},
+                Method::TotalPivotingGaussianElimination => {},
+                Method::GaussianFactorization => {},
+                Method::PivotingGaussianFactorization => {},
+                Method::Cholesky => {},
+                Method::Crout => {},
+                Method::Doolittle => {},
+                Method::GaussSeidel => {},
+                Method::Jacobi => {},
+                Method::SOR => {},
+                _ => (),
+            }
+        },
+        ProblemType::Interpolation => {
+            match json.method {
+                Method::Vandermonde => {},
+                Method::DividedDifferences => {},
+                Method::Lagrange => {},
+                Method::LinearSplines => {},
+                Method::QuadraticSplines => {},
+                Method::CubicSplines => {},
+                _ => (),
+            }
+        },
     }
 
     json
