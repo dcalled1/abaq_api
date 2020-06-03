@@ -11,3 +11,4 @@ abaq_methods = {path="abaq_methods"}
 actix-web = "2.0"
 actix-rt = "1.0"
 serde = "1.0.111"
+ndarray = {version = "0.13.1", features = ["serde"]}

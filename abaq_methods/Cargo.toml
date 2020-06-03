@@ -9,6 +9,6 @@ edition = "2018"
 [dependencies]
 num-traits = "0.2.11"
 nalgebra = "0.21"
-ndarray = {version = "0.13.1", features = ["rayon"]}
+ndarray = {version = "0.13.1", features = ["rayon", "serde"]}
 ndarray-linalg = { version = "0.12", features = ["intel-mkl"] }
 meval = "0.2.0"
