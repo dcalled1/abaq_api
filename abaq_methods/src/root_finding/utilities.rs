@@ -1,6 +1,7 @@
 use num_traits::{abs, Float};
+use serde::Serialize;
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize)]
 pub enum Pessimistic {
     MaxIterationsReached,
     DivBy0,
@@ -11,7 +12,7 @@ pub enum Pessimistic {
     InvalidFunction,
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize)]
 pub enum Optimistic {
     RootFound,
     RootApproxFound,

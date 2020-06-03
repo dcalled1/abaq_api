@@ -8,6 +8,7 @@ dependencies = [
  "actix-rt",
  "actix-web",
  "ndarray",
+ "ndarray-linalg",
  "serde",
 ]
 
@@ -20,6 +21,7 @@ dependencies = [
  "ndarray",
  "ndarray-linalg",
  "num-traits",
+ "serde",
 ]
 
 [[package]]

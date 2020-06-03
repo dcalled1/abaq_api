@@ -1,9 +1,13 @@
 use std::fmt;
+use serde::Serialize;
 
+#[derive(Serialize)]
 pub struct Log {
     vars: Vec<f64>,
     i: u32
 }
+
+#[derive(Serialize)]
 pub struct Logbook {
     head: Vec<String>,
     regs: Vec<Log>,

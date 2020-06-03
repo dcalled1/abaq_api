@@ -4,8 +4,9 @@ use ndarray::parallel::prelude::*;
 use std::mem;
 use ndarray_linalg::{Norm, c64};
 use nalgebra::ComplexField;
+use serde::Serialize;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub enum Error {
     DivBy0,
     BadIn,
@@ -27,7 +28,7 @@ pub enum IterationType {
     SOR(f64),
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct LUStage<T: ComplexField> {
     l: Array2<T>,
     u: Array2<T>,
@@ -35,7 +36,7 @@ pub struct LUStage<T: ComplexField> {
     marks: Option<Array1<usize>>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct LUStages<T: ComplexField> {
     stages: Vec<LUStage<T>>,
 }
@@ -72,7 +73,7 @@ impl <T: ComplexField> LUStages<T> {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Stage {
     a: Array2<f64>,
     b: Array1<f64>,
@@ -81,7 +82,7 @@ pub struct Stage {
     marks: Option<Array1<usize>>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Stages {
     stages: Vec<Stage>,
 }
@@ -115,14 +116,14 @@ impl Stages {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Register {
     i: usize,
     err: f64,
     x: Array1<f64>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Table {
     t: Array2<f64>,
     c: Array1<f64>,

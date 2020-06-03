@@ -13,12 +13,14 @@ pub trait RunnableMethod {
 
 //Methods
 
-pub fn incremental_search(f: impl Fn(f64)->f64, x0: f64, dx: f64, n:u32)
+pub fn incremental_search(f: impl Fn(f64)->f64, x0: f64, dx: f64, n: usize)
     -> Result<(Option<f64>, Option<(f64, f64)>, Optimistic), Pessimistic> {
     let (mut xa, mut xb) = (x0, x0 + dx);
     let (mut ya, mut yb) = (f(xa), f(xb));
+    check(ya)?;
+    check(yb)?;
 
-    let mut i = 0u32;
+    let mut i = 0usize;
     while ya * yb > 0f64 && i < n {
         xa = xb;
         xb = xa + dx;
@@ -40,7 +42,7 @@ pub fn incremental_search(f: impl Fn(f64)->f64, x0: f64, dx: f64, n:u32)
     Err(Pessimistic::MaxIterationsReached)
 }
 
-pub fn bisection(f: impl Fn(f64)->f64, _xu: f64, _xl: f64, tol: f64, n:u32, error_type: Error)
+pub fn bisection(f: impl Fn(f64)->f64, _xu: f64, _xl: f64, tol: f64, n: u32, error_type: Error)
                           -> (Result<(f64, u32, Optimistic), Pessimistic>, Logbook) {
     let mut logbook = Logbook::new(n, vec!["xl".into(), "xm".into(), "xu".into(),
                                            "yl".into(), "ym".into(), "yu".into(), "error".into()]);

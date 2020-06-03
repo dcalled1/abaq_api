@@ -1,17 +1,19 @@
+use serde::Serialize;
 
-#[derive(Debug)]
+
+#[derive(Debug, Serialize)]
 pub enum Error {
     BadIn,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Spline {
     start: f64,
     end: f64,
     polynomial: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Splines {
     splines: Vec<Spline>,
 }
